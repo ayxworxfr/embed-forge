@@ -28,7 +28,7 @@ if(CMAKE_CROSSCOMPILING)
 
     if(EF_OSAL_BACKEND STREQUAL "bare")
         add_library(osal_impl STATIC osal/bare/osal_bare.c)
-        target_link_libraries(osal_impl PUBLIC ef_common cmsis_core)
+        target_link_libraries(osal_impl PUBLIC ef_common cmsis_device_f4)
     elseif(EF_OSAL_BACKEND STREQUAL "freertos")
         add_library(osal_impl STATIC osal/freertos/osal_freertos.c)
         target_link_libraries(osal_impl PUBLIC ef_common freertos_kernel)

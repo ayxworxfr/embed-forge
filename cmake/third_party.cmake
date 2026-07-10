@@ -36,7 +36,7 @@ add_library(stm32f4xx_hal_driver STATIC
 target_include_directories(stm32f4xx_hal_driver SYSTEM PUBLIC
     ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Inc
 )
-target_link_libraries(stm32f4xx_hal_driver PUBLIC cmsis_device_f4)
+target_link_libraries(stm32f4xx_hal_driver PUBLIC cmsis_device_f4 ef_common)
 # stm32f4xx_hal_conf.h 是"项目级配置"，属于 board 层职责，不属于第三方库本身
 target_include_directories(stm32f4xx_hal_driver PUBLIC
     ${CMAKE_SOURCE_DIR}/board/nucleo_f411re

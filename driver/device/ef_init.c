@@ -5,6 +5,8 @@
  */
 #include "ef_init.h"
 
+#include <stddef.h>
+
 #if defined(EF_ENABLE_AUTO_INIT)
 
 extern const ef_init_fn_t __ef_init_start[];

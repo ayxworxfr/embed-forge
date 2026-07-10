@@ -21,7 +21,7 @@
 
 #include <string.h>
 
-#include "core_cm4.h" /* CMSIS: __disable_irq / __enable_irq */
+#include "stm32f4xx.h" /* CMSIS 设备头：提供 __FPU_PRESENT/IRQn_Type，并间接引入 core_cm4.h */
 
 #ifndef EF_OSAL_BARE_MAX_MUTEX
 #define EF_OSAL_BARE_MAX_MUTEX 8
