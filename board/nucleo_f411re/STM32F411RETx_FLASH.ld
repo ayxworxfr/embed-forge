@@ -34,8 +34,9 @@ SECTIONS
         *(.text*)
         *(.rodata)
         *(.rodata*)
+        KEEP(*(.init))
+        KEEP(*(.fini))
         . = ALIGN(4);
-        _etext = .;
     } >FLASH
 
     /* 模块自动注册表：按名称字典序排列 4 个初始化阶段 */
@@ -74,7 +75,8 @@ SECTIONS
         PROVIDE_HIDDEN(__fini_array_end = .);
     } >FLASH
 
-    _sidata = LOADADDR(.data);
+    /* 所有只读段排完后，再放置 .data 的 LMA，避免与 libc .init 重叠 */
+    _etext = .;
 
     .data : AT (_etext)
     {
@@ -85,6 +87,8 @@ SECTIONS
         . = ALIGN(4);
         _edata = .;
     } >RAM
+
+    _sidata = LOADADDR(.data);
 
     .bss :
     {

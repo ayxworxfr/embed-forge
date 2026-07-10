@@ -8,7 +8,7 @@
 ## 1. 分层与依赖方向
 
 ```
-App        (app/)                业务逻辑：状态机、策略、流程
+App        (app/)                 业务逻辑：状态机、策略、流程
 Service    (service/)             功能组件：log / event_bus / config / cli
 OSAL       (osal/)                操作系统抽象：bare / freertos / host
 Driver     (driver/)              设备驱动：面向功能的抽象接口

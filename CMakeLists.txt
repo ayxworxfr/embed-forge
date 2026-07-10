@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.20)
 
 if(CMAKE_TOOLCHAIN_FILE MATCHES "arm-none-eabi")
     project(embed_forge C ASM)
+    # CMake 3.20+ 可能在 project() 探测编译器时改回 assembler-with-preprocessor
+    set(CMAKE_ASM_COMPILE_OBJECT
+        "<CMAKE_ASM_COMPILER> <INCLUDES> <FLAGS> -x assembler -c <SOURCE> -o <OBJECT>"
+        CACHE INTERNAL "GNU ASM compile rule for startup_stm32f411xe.s" FORCE)
 else()
     project(embed_forge C)
 endif()

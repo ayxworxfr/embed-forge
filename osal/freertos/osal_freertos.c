@@ -174,3 +174,18 @@ void osal_scheduler_run_once(void)
      * vTaskStartScheduler() 正常情况下永不返回。 */
     vTaskStartScheduler();
 }
+
+/* FreeRTOSConfig.h 开启了栈溢出/堆分配失败检测，必须提供对应钩子 */
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+{
+    (void)xTask;
+    (void)pcTaskName;
+    for (;;) {
+    }
+}
+
+void vApplicationMallocFailedHook(void)
+{
+    for (;;) {
+    }
+}

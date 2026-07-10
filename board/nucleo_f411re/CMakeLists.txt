@@ -4,6 +4,9 @@ add_library(board STATIC
     startup_stm32f411xe.s
 )
 
+# 双保险：即使 CMake 版本覆盖了 CMAKE_ASM_COMPILE_OBJECT，也强制纯汇编模式
+set_source_files_properties(startup_stm32f411xe.s PROPERTIES COMPILE_OPTIONS "-x;assembler")
+
 target_include_directories(board PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(board PUBLIC hal stm32f4xx_hal_driver ef_common)
 
