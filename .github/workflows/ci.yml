@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  host-test:
+    name: Host 单元测试 (Ubuntu, gcc)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure
+        run: cmake --preset host
+
+      - name: Build
+        run: cmake --build --preset host -j "$(nproc)"
+
+      - name: Run unit tests
+        run: ctest --preset host
+
+  target-build:
+    name: 真机固件交叉编译 (${{ matrix.osal }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        osal: [target-bare, target-freertos]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install arm-none-eabi-gcc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi
+
+      - name: Configure
+        run: cmake --preset ${{ matrix.osal }}
+
+      - name: Build
+        run: cmake --build --preset ${{ matrix.osal }} -j "$(nproc)"
+
+  format-check:
+    name: clang-format 检查
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Check formatting
+        run: make format-check

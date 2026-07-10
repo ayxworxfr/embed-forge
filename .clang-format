@@ -1,0 +1,29 @@
+---
+BasedOnStyle: LLVM
+Language: Cpp
+Standard: c++03
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+
+BreakBeforeBraces: Linux        # 函数体大括号独占一行，if/for/while 大括号跟在同一行
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortBlocksOnASingleLine: false
+
+PointerAlignment: Right          # void *arg，星号贴变量名
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignTrailingComments: true
+
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpaceAfterCStyleCast: false
+
+IndentCaseLabels: true
+SortIncludes: false              # 手动维护的分组顺序（本层头文件 -> 下层依赖），不自动排序
+ReflowComments: false             # 中文注释按字符宽度重排容易变乱，保持手写换行

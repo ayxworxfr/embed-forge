@@ -1,0 +1,36 @@
+# ---- 构建产物 ----
+build/
+build-*/
+cmake-build-*/
+compile_commands.json
+CMakeUserPresets.json
+
+# ---- 目标文件 / 库 / 固件产物 ----
+*.o
+*.obj
+*.a
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.su
+
+# ---- IDE / 编辑器 ----
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.vs/
+.idea/
+*.swp
+
+# ---- 系统杂项 ----
+.DS_Store
+Thumbs.db
+
+# ---- third_party 是 git submodule，内容由 .gitmodules 管理 ----
+# 不要忽略 third_party/ 目录本身：主仓库需要跟踪各子模块的 commit 指针。
+# 子模块源码由 `make deps`（git submodule update --init --recursive）拉取。
+# 若忽略 third_party/，clone 后目录为空，CMake 会直接找不到依赖。

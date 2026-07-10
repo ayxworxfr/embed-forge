@@ -1,0 +1,92 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "EmbedForge: deps",
+            "type": "shell",
+            "command": "make deps",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "EmbedForge: host build",
+            "type": "shell",
+            "command": "make host",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "EmbedForge: host test",
+            "type": "shell",
+            "command": "make host-test",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": [
+                "EmbedForge: host build"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "EmbedForge: build current host test",
+            "type": "shell",
+            "command": "cmake --build build-host --target ${fileBasenameNoExtension}",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "EmbedForge: target-bare",
+            "type": "shell",
+            "command": "make target-bare",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "EmbedForge: target-freertos",
+            "type": "shell",
+            "command": "make target-freertos",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "EmbedForge: format",
+            "type": "shell",
+            "command": "make format",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "EmbedForge: format current file",
+            "type": "shell",
+            "command": "clang-format -i \"${file}\"",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

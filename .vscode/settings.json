@@ -1,0 +1,39 @@
+{
+    // CMake：默认走 host preset，与 make host 一致
+    "cmake.configureOnOpen": false,
+    "cmake.useCMakePresets": "always",
+    "cmake.configurePreset": "host",
+    "cmake.buildPreset": "host",
+    "cmake.testPreset": "host",
+
+    // IntelliSense：使用 host 构建生成的 compile_commands.json
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build-host/compile_commands.json",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.errorSquiggles": "enabled",
+
+    // 格式化：与 Makefile format 目标共用 .clang-format
+    "editor.formatOnSave": true,
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "clang-format.executable": "clang-format",
+
+    // 调试器路径（MSYS2 MinGW64 gdb；需 pacman -S mingw-w64-x86_64-gdb）
+    "embed-forge.gdbPath": "C:/software/common/msys64/mingw64/bin/gdb.exe",
+
+    // 终端：优先 Git Bash，与 make 命令兼容
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+
+    // 搜索/文件树：隐藏第三方库和构建产物
+    "search.exclude": {
+        "**/third_party": true,
+        "**/build-*": true
+    },
+    "files.watcherExclude": {
+        "**/third_party/**": true,
+        "**/build-*/**": true
+    },
+    "files.associations": {
+        "*.h": "c"
+    }
+}

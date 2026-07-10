@@ -1,0 +1,46 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": { "major": 3, "minor": 20, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "host",
+      "displayName": "Host 单元测试（PC，需要 gcc/clang）",
+      "binaryDir": "${sourceDir}/build-host",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "target-bare",
+      "displayName": "真机固件 · 裸机 OSAL 后端",
+      "binaryDir": "${sourceDir}/build-target-bare",
+      "toolchainFile": "${sourceDir}/cmake/toolchain-arm-none-eabi.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "EF_OSAL_BACKEND": "bare"
+      }
+    },
+    {
+      "name": "target-freertos",
+      "displayName": "真机固件 · FreeRTOS OSAL 后端",
+      "binaryDir": "${sourceDir}/build-target-freertos",
+      "toolchainFile": "${sourceDir}/cmake/toolchain-arm-none-eabi.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "EF_OSAL_BACKEND": "freertos"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "host", "configurePreset": "host" },
+    { "name": "target-bare", "configurePreset": "target-bare" },
+    { "name": "target-freertos", "configurePreset": "target-freertos" }
+  ],
+  "testPresets": [
+    {
+      "name": "host",
+      "configurePreset": "host",
+      "output": { "outputOnFailure": true }
+    }
+  ]
+}
