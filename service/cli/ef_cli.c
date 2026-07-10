@@ -35,7 +35,7 @@ static int cmd_help(int argc, char **argv)
 {
     EF_UNUSED(argc);
     EF_UNUSED(argv);
-    char line[EF_CLI_CMD_NAME_MAX + EF_CLI_HELP_MAX + 8];
+    char line[EF_CLI_CMD_NAME_MAX + EF_CLI_HELP_MAX + 16];
     for (uint32_t i = 0; i < EF_CLI_MAX_COMMANDS; i++) {
         if (s_commands[i].used) {
             snprintf(line, sizeof(line), "  %-10s %s\r\n", s_commands[i].name, s_commands[i].help);

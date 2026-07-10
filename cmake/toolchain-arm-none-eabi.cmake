@@ -9,7 +9,9 @@ set(CMAKE_SYSTEM_PROCESSOR arm)
 
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
 set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
-set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
+# 用 gas 直接汇编，避免 CMake+GCC 默认追加 -x assembler-with-preprocessor
+#（Ubuntu apt 的 gcc-arm-none-eabi 不支持该语言模式）
+set(CMAKE_ASM_COMPILER arm-none-eabi-as)
 set(CMAKE_OBJCOPY arm-none-eabi-objcopy CACHE FILEPATH "")
 set(CMAKE_SIZE arm-none-eabi-size CACHE FILEPATH "")
 
@@ -19,7 +21,9 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 set(CPU_FLAGS "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 
 set(CMAKE_C_FLAGS_INIT "${CPU_FLAGS} -ffunction-sections -fdata-sections -fno-common -Wall -Wextra")
-set(CMAKE_ASM_FLAGS_INIT "${CPU_FLAGS} -x assembler-with-preprocessor")
+# startup_stm32f411xe.s 是纯 GNU 汇编（无 #include），用默认 .s 模式即可；
+# Ubuntu apt 的 gcc-arm-none-eabi 对 -x assembler-with-preprocessor 支持不完整。
+set(CMAKE_ASM_FLAGS_INIT "${CPU_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS_INIT
     "${CPU_FLAGS} -specs=nano.specs -specs=nosys.specs -Wl,--gc-sections -Wl,--print-memory-usage"
 )

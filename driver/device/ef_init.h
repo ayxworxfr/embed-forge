@@ -29,14 +29,15 @@ extern "C" {
 #define EF_INIT_LEVEL_SERVICE "3_service"
 #define EF_INIT_LEVEL_APP "4_app"
 
-typedef int (*ef_init_fn_t)(void);
+#include "ef_common.h"
+
+typedef ef_err_t (*ef_init_fn_t)(void);
 
 #if defined(EF_ENABLE_AUTO_INIT)
 
 #define EF_INIT_EXPORT(fn, level)                                                                  \
     __attribute__((used,                                                                           \
-                   section(".ef_init." level))) static const ef_init_fn_t _ef_init_ptr_##fn =      \
-        (ef_init_fn_t)(fn)
+                   section(".ef_init." level))) static const ef_init_fn_t _ef_init_ptr_##fn = fn
 
 /** 依次执行所有通过 EF_INIT_EXPORT 注册的初始化函数，只在真机固件里调用一次 */
 void ef_init_run_all(void);

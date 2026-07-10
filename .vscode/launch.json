@@ -6,41 +6,76 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build-host/test/${fileBasenameNoExtension}",
-            "windows": {
-                "program": "${workspaceFolder}/build-host/test/${fileBasenameNoExtension}.exe"
-            },
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "${config:embed-forge.gdbPath}",
             "preLaunchTask": "EmbedForge: build current host test",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "${config:embed-forge.gdbPath}",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "${config:embed-forge.gdbPath}",
+                "program": "${workspaceFolder}/build-host/test/${fileBasenameNoExtension}.exe",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            }
         },
         {
             "name": "EmbedForge: Debug test_cli",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build-host/test/test_cli",
-            "windows": {
-                "program": "${workspaceFolder}/build-host/test/test_cli.exe"
-            },
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "${config:embed-forge.gdbPath}",
-            "preLaunchTask": "EmbedForge: host build"
+            "preLaunchTask": "EmbedForge: host build",
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "${config:embed-forge.gdbPath}",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "${config:embed-forge.gdbPath}",
+                "program": "${workspaceFolder}/build-host/test/test_cli.exe",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            }
         }
     ]
 }

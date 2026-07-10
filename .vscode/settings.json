@@ -18,7 +18,7 @@
     },
     "clang-format.executable": "clang-format",
 
-    // 调试器路径（macOS: brew install gdb；Windows: MSYS2 pacman -S mingw-w64-x86_64-gdb）
+    // 调试器路径（Linux/Windows 用 GDB；macOS 在 launch.json 里走系统 LLDB）
     "embed-forge.gdbPath": "/opt/homebrew/bin/gdb",
 
     // 终端：Windows 优先 Git Bash，与 make 命令兼容
