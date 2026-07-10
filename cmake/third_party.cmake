@@ -30,6 +30,8 @@ add_library(stm32f4xx_hal_driver STATIC
     ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal.c
     ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_cortex.c
     ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_rcc.c
+    ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_flash.c
+    ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_dma.c
     ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_gpio.c
     ${EF_THIRD_PARTY_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_uart.c
 )

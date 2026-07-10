@@ -17,12 +17,12 @@ set_property(CACHE EF_OSAL_BACKEND PROPERTY STRINGS bare freertos)
 if(CMAKE_CROSSCOMPILING)
     message(STATUS "embed-forge: building MCU firmware (target=STM32F411RE, OSAL=${EF_OSAL_BACKEND})")
 
+    add_subdirectory(lib/ef_common)
     include(${CMAKE_SOURCE_DIR}/cmake/third_party.cmake)
     # 模块自动注册（EF_INIT_EXPORT 的链接器段机制）只在真机固件里启用，
     # 原因见 driver/device/ef_init.h 顶部注释。
     add_compile_definitions(EF_ENABLE_AUTO_INIT)
 
-    add_subdirectory(lib/ef_common)
     add_subdirectory(lib/ringbuffer)
     add_subdirectory(hal)
 
