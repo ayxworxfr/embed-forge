@@ -5,7 +5,10 @@
             "name": "EmbedForge: Debug current host test",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build-host/test/${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}/build-host/test/${fileBasenameNoExtension}",
+            "windows": {
+                "program": "${workspaceFolder}/build-host/test/${fileBasenameNoExtension}.exe"
+            },
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -26,7 +29,10 @@
             "name": "EmbedForge: Debug test_cli",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build-host/test/test_cli.exe",
+            "program": "${workspaceFolder}/build-host/test/test_cli",
+            "windows": {
+                "program": "${workspaceFolder}/build-host/test/test_cli.exe"
+            },
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

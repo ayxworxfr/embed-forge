@@ -18,10 +18,10 @@
     },
     "clang-format.executable": "clang-format",
 
-    // 调试器路径（MSYS2 MinGW64 gdb；需 pacman -S mingw-w64-x86_64-gdb）
-    "embed-forge.gdbPath": "C:/software/common/msys64/mingw64/bin/gdb.exe",
+    // 调试器路径（macOS: brew install gdb；Windows: MSYS2 pacman -S mingw-w64-x86_64-gdb）
+    "embed-forge.gdbPath": "/opt/homebrew/bin/gdb",
 
-    // 终端：优先 Git Bash，与 make 命令兼容
+    // 终端：Windows 优先 Git Bash，与 make 命令兼容
     "terminal.integrated.defaultProfile.windows": "Git Bash",
 
     // 搜索/文件树：隐藏第三方库和构建产物
