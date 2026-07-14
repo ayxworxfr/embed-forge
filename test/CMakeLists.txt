@@ -51,3 +51,11 @@ ef_add_host_test(test_app_led_blink
     LIBS ef_event_bus ef_log drv_led_mock
 )
 target_include_directories(test_app_led_blink PRIVATE ${CMAKE_SOURCE_DIR}/app)
+
+# Demo 1：交互式 CLI，给人跑的不是自动化测试，不注册进 CTest
+add_executable(demo_cli_repl
+    host/demo_cli_repl.c
+    ${CMAKE_SOURCE_DIR}/app/app_led_blink.c
+)
+target_link_libraries(demo_cli_repl PRIVATE ef_cli ef_event_bus ef_log drv_led_mock)
+target_include_directories(demo_cli_repl PRIVATE ${CMAKE_SOURCE_DIR}/app)

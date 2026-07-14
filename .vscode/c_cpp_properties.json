@@ -27,12 +27,8 @@
                 "STM32F411xE",
                 "EF_ENABLE_AUTO_INIT"
             ],
-            "compilerPath": "/usr/bin/clang",
-            "compilerArgs": [
-                "--target=arm-none-eabi"
-            ],
             "cStandard": "c11",
-            "intelliSenseMode": "gcc-arm"
+            "intelliSenseMode": "${default}"
         }
     ],
     "version": 4

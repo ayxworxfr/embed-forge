@@ -38,7 +38,7 @@
             "problemMatcher": []
         },
         {
-            "label": "EmbedForge: build current host test",
+            "label": "EmbedForge: build current host target",
             "type": "shell",
             "command": "cmake --build build-host --target ${fileBasenameNoExtension}",
             "options": {

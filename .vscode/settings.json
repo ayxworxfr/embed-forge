@@ -18,8 +18,7 @@
     },
     "clang-format.executable": "clang-format",
 
-    // 调试器路径（Linux/Windows 用 GDB；macOS 在 launch.json 里走系统 LLDB）
-    "embed-forge.gdbPath": "/opt/homebrew/bin/gdb",
+    // 调试器路径写在 launch.json 的 osx/linux/windows 分平台配置里，不要在这里设单一全局路径。
 
     // 终端：Windows 优先 Git Bash，与 make 命令兼容
     "terminal.integrated.defaultProfile.windows": "Git Bash",
